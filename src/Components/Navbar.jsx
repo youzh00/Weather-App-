@@ -10,7 +10,6 @@ import { useNavigate, useLocation } from 'react-router-dom'
 export default function Navbar() {
     const navigate=useNavigate()
     const {pathname}=useLocation()
-    console.log(pathname)
 
     const pathmatches=(route)=>{
         if(route===pathname){
