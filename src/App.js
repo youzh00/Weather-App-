@@ -8,7 +8,8 @@ import Header from "./Components/Header";
 function App() {
   return (
     <Router className="App">
-      <Header />
+      {/* <Header /> */}
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/weather" element={<Weather />} />

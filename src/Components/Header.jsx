@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import styles from '../Style/Header.module.css'
 import {MdOutlineDarkMode} from 'react-icons/md'
 import {FiSun} from 'react-icons/fi'
-import logo from '../assets/weather.png'
 import DarkModeToggle from "react-dark-mode-toggle";
+import {TiWeatherPartlySunny} from 'react-icons/ti'
+
 
 
 
@@ -16,15 +17,17 @@ export default function Header() {
     }
   return (
       <header >
+            
             <div className={styles.app}>
-                <img src={logo} alt="" />
+                <TiWeatherPartlySunny size={50} fill={'#000'}/>
               <h2>Weather App</h2>
             </div>
            
             <DarkModeToggle
                     onChange={toggle}
                     checked={mode}
-                    size={80}
+                    size={60}
+                    className={styles.darkmodeButton}
             />
       </header>
   )

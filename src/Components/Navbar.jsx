@@ -4,6 +4,8 @@ import {AiOutlineFieldTime} from "react-icons/ai"
 import {BiHomeSmile} from 'react-icons/bi'
 import {TiWeatherCloudy} from 'react-icons/ti'
 import { useNavigate, useLocation } from 'react-router-dom'
+import DarkModeToggle from "react-dark-mode-toggle";
+
 
 
 
@@ -17,6 +19,7 @@ export default function Navbar() {
         }
         return false
     }
+  
   return (
     <main className='navBar'>
         < div className='navBarContainer'>

@@ -1,8 +1,10 @@
-main {
-  margin-top: 120px;
+.main {
 }
 .HomeWelcome {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.darkmodeButton {
+  z-index: 10;
 }

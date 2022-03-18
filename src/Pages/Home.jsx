@@ -1,16 +1,14 @@
 import React from 'react'
 import style from '../Style/Home.module.css'
 import Slider from '../Components/Slider'
-
+import Header from '../Components/Header'
 
 
 export default function Home() {
   return (
-    <main>
+    <main className={style.main}>
+      <Header />
       <section>
-        <div className={style.HomeWelcome}>
-          <h2 >Welcom to your daily weather app</h2>
-        </div>
         <div>
           <Slider/>
         </div>

@@ -1,30 +1,38 @@
-import React from 'react'
-import img1 from '../assets/SliderData/img1.jpg'
-import img2 from '../assets/SliderData/img2.jpg'
-import img3 from '../assets/SliderData/img3.jpg'
-import img4 from '../assets/SliderData/img4.jpg'
-import img5 from '../assets/SliderData/img5.jpg'
-import img6 from '../assets/SliderData/img6.jpg'
+import React, { useState } from 'react'
+
 import style from '../Style/Slider.module.css'
-
-
+import { sliderData } from '../assets/SliderData/SliderData'
+import {FaArrowCircleLeft} from 'react-icons/fa'
+import {FaArrowCircleRight} from 'react-icons/fa'
 
 export default function Slider() {
+  const [current,setCurrent]=useState(0)
+  const length=sliderData.length
+
+  const prevImg=()=>{
+    setCurrent(current===0 ? length-1 :current -1)
+  }
+  const nextImg=()=>{
+    setCurrent(current===length-1 ? 0 : current+1)
+  }
+
+
+
   return (
-    <div>
-        <div className={style.rightClick}></div>
-        <section>
-            <img src={img1} alt="" className=''/>
-            <img src={img2} alt="" />
-            <img src={img3} alt="" />
-            <img src={img4} alt="" />
-            <img src={img5} alt="" />
-            <img src={img6} alt="" />
-        </section>
-        <div className={style.leftClick}></div>
-            
-
-    </div>
-
+  <section className={style.slider}>
+      <FaArrowCircleLeft className={style.leftArrow} onClick={prevImg} size={30}/>
+      <FaArrowCircleRight className={style.rightArrow} onClick={nextImg} size={30}/>
+      <div className={style.slideContainer}>
+      {
+        sliderData.map((slide,index)=>{
+          return (
+        <div  key={slide.id} className={index===current ? `${style.slide} ${style.active} `: `${style.slide}`}>
+                {index===current &&<img src={slide.image} alt="" className={style.image}/> }
+        </div>
+          )
+        })
+      }
+      </div>
+  </section>
   )
 }
