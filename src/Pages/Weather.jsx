@@ -3,7 +3,7 @@ import { Input, Stack } from '@chakra-ui/react'
 import  DataContext  from '../Context/dataContext/DataContext'
 import { TextField } from '@material-ui/core'
 import style from '../Style/Weather.module.css'
-import image from '../assets/weather.jpg'
+import image from '../assets/weather1.jpg'
 
 export default function Weather() {
   const {getWeather,weather}= useContext(DataContext)

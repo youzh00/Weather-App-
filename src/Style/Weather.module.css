@@ -12,7 +12,7 @@
 }
 
 .formContainer {
-  background-color: rgb(255, 228, 196, 0.4);
+  background-color: rgba(0, 0, 0, 0.4);
   width: 25rem;
   height: 100vh;
 }
@@ -32,6 +32,8 @@
 }
 .textField {
   width: 20rem;
+  background-color: rgb(128, 128, 128, 0.5);
+  border-radius: 5px;
 }
 .fromContainerDiv {
   display: flex;
@@ -41,9 +43,10 @@
   margin-top: 70px;
 }
 .fromContainerDiv .weatherDetails {
-  color: rgb(233, 233, 233);
+  color: rgb(255, 255, 255);
+  font-size: 20px;
 }
 .fromContainerDiv p {
-  color: white;
+  color: rgb(202, 202, 202);
   margin-top: 20px;
 }
