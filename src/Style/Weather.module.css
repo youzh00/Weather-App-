@@ -45,8 +45,44 @@
 .fromContainerDiv .weatherDetails {
   color: rgb(255, 255, 255);
   font-size: 20px;
+  font-weight: bold;
 }
-.fromContainerDiv p {
-  color: rgb(202, 202, 202);
+
+.nightPara {
+  color: rgb(133, 133, 133);
   margin-top: 20px;
+}
+.morningPara {
+  color: rgb(18, 6, 46);
+  margin-top: 20px;
+}
+.dayMode {
+  width: 100px;
+  height: 50px;
+  background-color: rgb(182, 182, 182);
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  justify-content: center;
+}
+.dayMode p {
+  color: rgb(34, 34, 34);
+  margin-left: 10px;
+  font-weight: bold;
+}
+.cityContainer {
+  width: 150px;
+  height: 50px;
+  background-color: rgb(182, 182, 182);
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  justify-content: center;
+}
+.cityContainer p {
+  color: rgb(34, 34, 34);
+  margin-left: 10px;
+  font-weight: bold;
 }
