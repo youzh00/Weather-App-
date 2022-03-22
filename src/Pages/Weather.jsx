@@ -7,6 +7,9 @@ import morning1 from '../assets/morning1.jpg'
 import {BsMoonStarsFill} from 'react-icons/bs'
 import {BsFillSunFill} from 'react-icons/bs'
 import {FaCity} from 'react-icons/fa'
+import CityNotExist from '../Components/CityNotExist'
+import {  useNavigate } from "react-router-dom";
+
 
 
 
@@ -14,7 +17,7 @@ export default function Weather() {
   const {getWeather,data,currentWeather,isDay,location}= useContext(DataContext)
   const [city,setCity]=useState('')
   const [submited,setSubmited]=useState(false)
-
+  const navigate=useNavigate()
 
   
   const handleChange=(e)=>{
@@ -24,17 +27,18 @@ export default function Weather() {
   const handleSubmit=(e)=>{
     e.preventDefault()
     getWeather(city)
+    setCity("")
     setSubmited(true)
   }
   console.log(data)
-
+  const navigating=()=>{
+    navigate('/error')
+    return 0
+  }
+  
 
   if(data.success===false){
-    return(
-      <div>
-          The city you entred does not exist
-      </div>
-    )
+       return <div>{navigating()}</div>
   }
   else{
 

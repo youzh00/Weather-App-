@@ -15,6 +15,7 @@
   background-color: rgba(0, 0, 0, 0.4);
   width: 25rem;
   height: 100vh;
+  backdrop-filter: blur(50px);
 }
 .image {
   position: absolute;
