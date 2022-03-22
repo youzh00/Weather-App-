@@ -10,7 +10,9 @@ const key = "d724cda68c856a754decbec531b904c5";
 export function DataContextProvider({ children }) {
   const key2 = "cc2ee984298825bbf478a71f73670aba";
   const [data, setData] = useState([]);
-  const [currentWeather, setCurrentWethaer] = useState();
+  const [currentWeather, setCurrentWeather] = useState();
+  const [isDay, setIsDay] = useState("yes");
+  const [location, setLocation] = useState("");
 
   const getWeather = async (city) => {
     const data = await fetch(
@@ -18,14 +20,20 @@ export function DataContextProvider({ children }) {
     );
     const reponse = await data.json();
     setData(reponse);
-    setCurrentWethaer(data.current);
+    setCurrentWeather(() => reponse.current);
+    setLocation(() => reponse.location);
+    setIsDay(reponse.current.is_day);
+    console.log(reponse);
   };
+
   return (
     <DataContext.Provider
       value={{
         getWeather,
         data,
         currentWeather,
+        isDay,
+        location,
       }}
     >
       {children}
