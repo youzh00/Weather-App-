@@ -6,9 +6,8 @@ import night from '../assets/night1.jpg'
 import morning1 from '../assets/morning1.jpg'
 import {BsMoonStarsFill} from 'react-icons/bs'
 import {BsFillSunFill} from 'react-icons/bs'
-import {FaCity} from 'react-icons/fa'
-import CityNotExist from '../Components/CityNotExist'
 import {  useNavigate } from "react-router-dom";
+
 
 
 
@@ -24,24 +23,22 @@ export default function Weather() {
       setCity(e.target.value)
       setSubmited(false)
   }
-  const handleSubmit=(e)=>{
+  const handleSubmit=async (e)=>{
     e.preventDefault()
-    getWeather(city)
+    await getWeather(city)
     setCity("")
     setSubmited(true)
   }
-  console.log(data)
   const navigating=()=>{
     navigate('/error')
     return 0
   }
   
-
   if(data.success===false){
        return <div>{navigating()}</div>
   }
-  else{
-
+  
+  else{ 
     return (
       <div className={style.weather}>
       <img src={isDay==="no" ? night :morning1} alt="" className={style.image}/>
@@ -50,13 +47,24 @@ export default function Weather() {
             {isDay==="no" ? <BsMoonStarsFill size={30}/> : <BsFillSunFill size={30}/>}
             <p>{isDay==="no" ? 'Night': 'Light '}</p>
           </div>
-          {submited &&
-           <div className={style.cityContainer}>
-           <FaCity size={25}/>
-           <p>{location.name}</p>
+         {submited &&
+         <div className={style.weatherContainer}>
+           <div className={isDay==="no" ? style.iconNight : style.iconSun}>
+           {isDay==="no" ? <BsMoonStarsFill size={90} fill={'#9fe4ff'}  /> 
+                         : <BsFillSunFill size={120} fill={'#ffff6e'}  />}
+           </div>
+           <p className={style.temp}>{currentWeather.temperature}&#xb0;</p>
+           <div className={style.weatherContainerCity}>
+             <p className={style.city}>{location.name}</p>
+             <p className={style.date}> {location.localtime}</p>
+           </div>
+           <div className={style.description}>
+              <p className={style.descriptionState}>{currentWeather.weather_descriptions[0]}</p>
+              <p>Weather</p>
+           </div>  
          </div>}
-         
       </div>
+
       <div className={style.formContainer}>
         <form onSubmit={handleSubmit} className={style.form}>
         <TextField id="standard-basic" label="City" variant="standard" value={city} onChange={handleChange} className={style.textField} />
@@ -64,18 +72,41 @@ export default function Weather() {
       {
       currentWeather!==undefined &&
         <div className={style.fromContainerDiv}>
+              
               <p className={style.weatherDetails} > Weather Details :</p>
-              <p className={isDay==="no" ? style.nightPara: style.morningPara}>Cloud Cover: {currentWeather.cloudcover} oktas</p>
-              <p className={isDay==="no" ? style.nightPara: style.morningPara}>Humidity: {currentWeather.humidity}</p>
-              <p className={isDay==="no" ? style.nightPara: style.morningPara}>Temperature: {currentWeather.temperature}&#8451;</p>
-              <p className={isDay==="no" ? style.nightPara: style.morningPara}>Wind Speed: {currentWeather.wind_speed} m/s</p>
-              <p className={isDay==="no" ? style.nightPara: style.morningPara}>Visibility: {currentWeather.visibility}</p>
-              <p className={isDay==="no" ? style.nightPara: style.morningPara}>Wind Degree: {currentWeather.wind_degree}</p>
-              <p className={isDay==="no" ? style.nightPara: style.morningPara}>Weather Description : {currentWeather.weather_descriptions[0]}</p>
+              <div className={isDay==="no" ? style.nightPara: style.morningPara}>
+                  <p >Cloud Cover: </p>
+                  <p>{currentWeather.cloudcover}</p>
+              </div>
+              <div className={isDay==="no" ? style.nightPara: style.morningPara}>
+                <p >Humidity: </p>
+                <p>{currentWeather.humidity}%</p>
+              </div>
+              <div className={isDay==="no" ? style.nightPara: style.morningPara}>
+              <p >Temperature: </p>
+              <p>{currentWeather.temperature}&#8451;</p>
+              </div>
+              <div className={isDay==="no" ? style.nightPara: style.morningPara}>
+                <p >Wind Speed: </p>
+                <p>{currentWeather.wind_speed} Km/h</p>
+              </div>
+              <div className={isDay==="no" ? style.nightPara: style.morningPara}>
+                <p >Visibility: </p>
+                <p>{currentWeather.visibility}</p>
+              </div>
+              <div className={isDay==="no" ? style.nightPara: style.morningPara}>
+                <p >Wind Degree: </p>
+                <p>{currentWeather.wind_degree}</p>
+              </div>
+              <div className={isDay==="no" ? style.nightPara: style.morningPara}>
+                <p >Weather Description :</p>
+                <p> {currentWeather.weather_descriptions[0]}</p>
+
+              </div>
         </div>
      } 
       </div>       
     </div>
   )
-}
-}
+}}
+

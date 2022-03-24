@@ -23,7 +23,6 @@ export function DataContextProvider({ children }) {
     setCurrentWeather(() => reponse.current);
     setLocation(() => reponse.location);
     setIsDay(reponse.current.is_day);
-    console.log(reponse);
   };
 
   return (

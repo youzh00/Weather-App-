@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import styles from '../Style/Header.module.css'
-import {MdOutlineDarkMode} from 'react-icons/md'
-import {FiSun} from 'react-icons/fi'
 import DarkModeToggle from "react-dark-mode-toggle";
 import {TiWeatherPartlySunny} from 'react-icons/ti'
 

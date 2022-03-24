@@ -42,6 +42,7 @@
   justify-content: center;
   margin-left: 20px;
   margin-top: 70px;
+  margin-right: 20px;
 }
 .fromContainerDiv .weatherDetails {
   color: rgb(255, 255, 255);
@@ -52,10 +53,16 @@
 .nightPara {
   color: rgb(133, 133, 133);
   margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .morningPara {
   color: rgb(18, 6, 46);
   margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .dayMode {
   width: 100px;
@@ -86,4 +93,57 @@
   color: rgb(34, 34, 34);
   margin-left: 10px;
   font-weight: bold;
+}
+.weatherContainer {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: antiquewhite;
+  position: relative;
+}
+.weatherContainer .temp {
+  color: white;
+  font-size: 120px;
+  margin-right: 10px;
+}
+.weatherContainer .iconSun {
+  position: absolute;
+  left: 30px;
+  top: 25px;
+}
+.weatherContainer .iconNight {
+  position: absolute;
+  left: 75px;
+  top: 40px;
+}
+.weatherContainerCity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-right: 10px;
+}
+.weatherContainerCity .city {
+  color: white;
+  font-size: 60px;
+}
+.weatherContainerCity .date {
+  font-size: 20px;
+  color: white;
+}
+.description {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: azure;
+  font-size: 25px;
+  margin-top: 20px;
+}
+.description .descriptionState {
+  font-size: 40px;
+}
+.description p {
+  color: rgb(176, 255, 255);
 }
