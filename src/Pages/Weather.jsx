@@ -1,11 +1,12 @@
-import{useContext, useState} from 'react'
+import{useContext, useEffect, useState} from 'react'
 import  DataContext  from '../Context/dataContext/DataContext'
 import { TextField } from '@material-ui/core'
 import style from '../Style/Weather.module.css'
-import night from '../assets/night1.jpg'
+import night from '../assets/night.jpg'
 import morning1 from '../assets/morning1.jpg'
 import {BsMoonStarsFill} from 'react-icons/bs'
 import {BsFillSunFill} from 'react-icons/bs'
+import {ImLocation2} from 'react-icons/im'
 import {  useNavigate } from "react-router-dom";
 
 
@@ -13,100 +14,75 @@ import {  useNavigate } from "react-router-dom";
 
 
 export default function Weather() {
-  const {getWeather,data,currentWeather,isDay,location}= useContext(DataContext)
+  const {getWeather1,getWeather2,data1,data2,isDay,location,sys,weatherData}= useContext(DataContext)
   const [city,setCity]=useState('')
   const [submited,setSubmited]=useState(false)
+  
   const navigate=useNavigate()
 
-  
+
+  // //Converting TimeStimp unix to time  
+  function format_time(s) {
+    const dtFormat = new Intl.DateTimeFormat('en-GB', {
+      timeStyle: 'medium',
+      timeZone: 'UTC'
+    });
+    return dtFormat.format(new Date(s * 1e3));
+  }
+ 
   const handleChange=(e)=>{
       setCity(e.target.value)
       setSubmited(false)
   }
   const handleSubmit=async (e)=>{
     e.preventDefault()
-    await getWeather(city)
+    await getWeather1(city)
+    await getWeather2(city)
     setCity("")
     setSubmited(true)
   }
+   
+
   const navigating=()=>{
     navigate('/error')
     return 0
   }
   
-  if(data.success===false){
+  //Return Values
+  if(data1.success===false){
        return <div>{navigating()}</div>
   }
   
   else{ 
     return (
-      <div className={style.weather}>
-      <img src={isDay==="no" ? night :morning1} alt="" className={style.image}/>
-      <div className={style.imageContainer}>
-          <div className={style.dayMode}>
-            {isDay==="no" ? <BsMoonStarsFill size={30}/> : <BsFillSunFill size={30}/>}
-            <p>{isDay==="no" ? 'Night': 'Light '}</p>
+    <div className={style.weather}>
+          <img src={isDay==="no" ? night :morning1} alt="" className={style.image}/>
+          <div className={style.formContainer}>
+            <form onSubmit={handleSubmit}>
+              <input type="text" value={city} className={style.input} onChange={handleChange} placeholder={'city'} />
+            </form>
           </div>
-         {submited &&
-         <div className={style.weatherContainer}>
-           <div className={isDay==="no" ? style.iconNight : style.iconSun}>
-           {isDay==="no" ? <BsMoonStarsFill size={90} fill={'#9fe4ff'}  /> 
-                         : <BsFillSunFill size={120} fill={'#ffff6e'}  />}
-           </div>
-           <p className={style.temp}>{currentWeather.temperature}&#xb0;</p>
-           <div className={style.weatherContainerCity}>
-             <p className={style.city}>{location.name}</p>
-             <p className={style.date}> {location.localtime}</p>
-           </div>
-           <div className={style.description}>
-              <p className={style.descriptionState}>{currentWeather.weather_descriptions[0]}</p>
-              <p>Weather</p>
-           </div>  
-         </div>}
-      </div>
 
-      <div className={style.formContainer}>
-        <form onSubmit={handleSubmit} className={style.form}>
-        <TextField id="standard-basic" label="City" variant="standard" value={city} onChange={handleChange} className={style.textField} />
-      </form> 
-      {
-      currentWeather!==undefined &&
-        <div className={style.fromContainerDiv}>
-              
-              <p className={style.weatherDetails} > Weather Details :</p>
-              <div className={isDay==="no" ? style.nightPara: style.morningPara}>
-                  <p >Cloud Cover: </p>
-                  <p>{currentWeather.cloudcover}</p>
-              </div>
-              <div className={isDay==="no" ? style.nightPara: style.morningPara}>
-                <p >Humidity: </p>
-                <p>{currentWeather.humidity}%</p>
-              </div>
-              <div className={isDay==="no" ? style.nightPara: style.morningPara}>
-              <p >Temperature: </p>
-              <p>{currentWeather.temperature}&#8451;</p>
-              </div>
-              <div className={isDay==="no" ? style.nightPara: style.morningPara}>
-                <p >Wind Speed: </p>
-                <p>{currentWeather.wind_speed} Km/h</p>
-              </div>
-              <div className={isDay==="no" ? style.nightPara: style.morningPara}>
-                <p >Visibility: </p>
-                <p>{currentWeather.visibility}</p>
-              </div>
-              <div className={isDay==="no" ? style.nightPara: style.morningPara}>
-                <p >Wind Degree: </p>
-                <p>{currentWeather.wind_degree}</p>
-              </div>
-              <div className={isDay==="no" ? style.nightPara: style.morningPara}>
-                <p >Weather Description :</p>
-                <p> {currentWeather.weather_descriptions[0]}</p>
+          <div className={isDay==="no" ? style.weatherDetailNight : style.weatherDetailMorning}>
+            {submited&&
+             <div className={style.location}>
+                <ImLocation2 fill={isDay==="no" ? '#ffffff' : '#000000'} size={30} className={style.locationIcon}/>
+                <p>{location.city}, {location.country}</p>
+            </div>
+            }
+            <div className={style.weatherIcon}>
+              <img src={`https://openweathermap.org/img/wn/${weatherData.icon}@2x.png`} alt="" className={style.icon} />
+              <p>{weatherData.temp.toFixed(0)}&#176;</p>
+              <p>{weatherData.description}</p>
+              <p>{location.localTime}</p>
+            </div>
+          </div>
 
-              </div>
-        </div>
-     } 
-      </div>       
+
+
+    
     </div>
+    
   )
 }}
 
