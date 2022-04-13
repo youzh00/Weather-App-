@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 export const DataContext = createContext();
 
-const API =
+const ApiStructure =
   "http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=f5d4275eb44e1c4e0f2685d54978fc6c";
 
 const key1 = "cc2ee984298825bbf478a71f73670aba";
