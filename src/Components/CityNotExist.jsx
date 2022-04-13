@@ -13,7 +13,7 @@ export default function CityNotExist() {
             <h2>Ooooops  The city you searched for does not exist !!</h2>
         </div>
         <div className={style.linkContainer}>
-                <a href='/weather' className={style.link}> <BiHomeSmile size={20} className={style.home}/> Back to Home </a>
+                <Link to='/weather' className={style.link}> <BiHomeSmile size={20} className={style.home}/> Back to Home </Link>
 
         </div>
     </main>

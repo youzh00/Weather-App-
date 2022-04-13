@@ -3,14 +3,13 @@ import Navbar from "./Components/Navbar";
 import Home from "./Pages/Home";
 import TimeZone from "./Pages/TimeZone";
 import Weather from "./Pages/Weather.jsx";
-import Header from "./Components/Header";
 import { DataContextProvider } from "./Context/dataContext/DataContext";
 import CityNotExist from "./Components/CityNotExist";
 
 function App() {
   return (
-    <DataContextProvider>
-      <Router className="App">
+    <Router className="App">
+      <DataContextProvider>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/weather" element={<Weather />} />
@@ -18,8 +17,8 @@ function App() {
           <Route path="/time-zone" element={<TimeZone />} />
         </Routes>
         <Navbar />
-      </Router>
-    </DataContextProvider>
+      </DataContextProvider>
+    </Router>
   );
 }
 
