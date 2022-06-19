@@ -5,11 +5,10 @@ import style from '../Style/Weather.module.css'
 import night from '../assets/night.jpg'
 import morning1 from '../assets/morning1.jpg'
 import { ImLocation2 } from 'react-icons/im'
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import { SiWindicss } from 'react-icons/si'
 import { GiWaterDrop } from 'react-icons/gi'
-import { BsFillSunriseFill } from 'react-icons/bs'
-import { BsFillSunsetFill } from 'react-icons/bs'
+import { BsFillSunsetFill,BsCalendarWeek,BsFillSunriseFill } from 'react-icons/bs'
 import {geocode} from '../Utils/Geocode'
 
 import HourlyWeaSlider from '../Components/HourlyWeaSlider'
@@ -116,10 +115,20 @@ export default function Weather() {
                 </div>
                 <p className={style.sunrisePara}>Sunrize</p>
               </div>
+              
 
             </div>
+            <div className={style.nextDaysContainer}>
+                <Link to="/weather">
+                <div className={style.nextDays}>
+                  <BsCalendarWeek size={25} fill={isDay === "no" ? '#ffffff' : '#000000'} />
+                  <p > > 7 Days</p>
+                </div>
+                </Link>
+                
+              </div>
          
-                <HourlyWeaSlider isDay={isDay}/>
+                <HourlyWeaSlider />
            
           </div>
           

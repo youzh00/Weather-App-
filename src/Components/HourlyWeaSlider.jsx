@@ -1,15 +1,18 @@
 import { useContext, useState } from 'react'
+import DataContext from '../Context/DataContext'
+
 
 import style from '../Style/HourlySlider.module.css'
-import {hourlyData} from '../Components/RawData'
 import WeatherHourly from './WeatherHourly'
 import ForecastWeather from '../Context/ForecastWeather'
 
 export default function HourlyWeaSlider() {
   const {forecastWeatherHourly}= useContext(ForecastWeather)
+  const { isDay } = useContext(DataContext)
+  console.log(isDay);
 
   return (
-  <section className={style.slider}>
+  <section className={isDay==='no'?style.sliderNight : style.slider}>
       <div className={style.slideContainer}>
             {forecastWeatherHourly.map((data)=>(
                 <WeatherHourly  currentWeather={data.temp-273.15} 

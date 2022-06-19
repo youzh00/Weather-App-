@@ -9,9 +9,9 @@ const WeatherHourly = ({currentWeather,img,date}) => {
   return (
     <>
       <div className={style.weatherHourlyCart}>
-        <p>{currentWeather.toFixed(2)}&#176;</p>
+        <p className={style.cartP}>{currentWeather.toFixed(2)}&#176;</p>
         <img src={img} alt="weather" className={style.img} />
-        <p>{currentDate}</p>
+        <p className={style.cartP}>{currentDate}</p>
       </div>
     </>
   )
