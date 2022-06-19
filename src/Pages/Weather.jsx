@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react'
-import DataContext from '../Context/dataContext/DataContext'
+import DataContext from '../Context/DataContext'
 import style from '../Style/Weather.module.css'
 import night from '../assets/night.jpg'
 import morning1 from '../assets/morning1.jpg'
@@ -9,20 +9,23 @@ import { SiWindicss } from 'react-icons/si'
 import { GiWaterDrop } from 'react-icons/gi'
 import { BsFillSunriseFill } from 'react-icons/bs'
 import { BsFillSunsetFill } from 'react-icons/bs'
+import WeatherHourly from '../Components/WeatherHourly'
+import {hourlyData} from '../Components/RawData'
+import HourlyWeaSlider from '../Components/HourlyWeaSlider'
 
 
 
 
 
 export default function Weather() {
-  const { getWeather1, getWeather2, data1, data2, isDay, location, sys, weatherData } = useContext(DataContext)
+  const { getWeather1, getWeather2,  isDay, location, weatherData } = useContext(DataContext)
   const [city, setCity] = useState('')
   const [submited, setSubmited] = useState(false)
 
   const navigate = useNavigate()
 
 
-  // Converting TimeStimp unix to time  
+  // Converting TimeStamp unix to time  
   function format_time(s) {
     const dtFormat = new Intl.DateTimeFormat('en-GB', {
       timeStyle: 'medium',
@@ -107,7 +110,17 @@ export default function Weather() {
               </div>
 
             </div>
-          </div>}
+            {/* <div className={style.todayList}> */}
+                {/* {hourlyData.map((data)=>(
+                <WeatherHourly currentWeather={data.temp-273.15} img={`https://openweathermap.org/img/wn/${data.icon}@4x.png`} time='22:00' />
+                ))} */}
+                <HourlyWeaSlider/>
+            {/* </div> */}
+           
+          </div>
+          
+          
+          }
       </div>
 
     )

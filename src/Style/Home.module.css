@@ -8,3 +8,23 @@
 .darkmodeButton {
   z-index: 10;
 }
+.slider {
+  position: absolute;
+}
+.quote {
+  position: relative;
+  top: 150px;
+  left: 60px;
+  width: 700px;
+  height: 200px;
+  background-color: rgb(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  flex-direction: column;
+}
+.quote h1 {
+  font-size: 60px;
+  color: rgb(255, 255, 255);
+}

@@ -3,7 +3,7 @@ import Navbar from "./Components/Navbar";
 import Home from "./Pages/Home";
 import TimeZone from "./Pages/TimeZone";
 import Weather from "./Pages/Weather.jsx";
-import { DataContextProvider } from "./Context/dataContext/DataContext";
+import { DataContextProvider } from "./Context/DataContext";
 import CityNotExist from "./Components/CityNotExist";
 
 function App() {

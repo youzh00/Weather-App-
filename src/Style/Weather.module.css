@@ -11,7 +11,7 @@
 .image {
   position: absolute;
   height: fit-content;
-  width: 80rem;
+  width: 100%;
   z-index: -2;
   filter: blur(2px);
   opacity: 0.9;
@@ -189,4 +189,12 @@
 .sunriseContainer div p {
   font-size: 25px;
   margin: 5px;
+}
+.todayList {
+  display: flex;
+  align-items: center;
+  width: 95rem;
+  height: 150px;
+  background-color: rgba(30, 17, 43, 0.3);
+  border-radius: 30px;
 }

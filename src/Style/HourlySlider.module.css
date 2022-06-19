@@ -1,0 +1,37 @@
+.slideContainer {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 1px;
+  grid-auto-columns: 13%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  margin: 10px;
+}
+.leftArrow {
+  position: absolute;
+  /* top: 50%; */
+  left: 32px;
+  font-size: 3rem;
+  color: black;
+  cursor: pointer;
+  z-index: 10;
+}
+.rightArrow {
+  position: absolute;
+  /* top: 50%; */
+  right: 32px;
+  font-size: 3rem;
+  cursor: pointer;
+  color: black;
+  z-index: 10;
+}
+.slider {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 95rem;
+  height: 170px;
+  background-color: rgba(30, 17, 43, 0.3);
+  border-radius: 30px;
+}
