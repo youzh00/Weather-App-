@@ -17,10 +17,11 @@ import HourlyWeaSlider from '../Components/HourlyWeaSlider'
 
 
 export default function Weather() {
-  const { getWeather1, getWeather2,  isDay, location, weatherData } = useContext(DataContext)
+  const {  getWeather,isDay ,weatherData } = useContext(DataContext)
   const {fetchForecastWeather}=useContext(ForecastWeather)
   const [city, setCity] = useState('')
   const [submited, setSubmited] = useState(false)
+  const [location, setLocation] = useState('')
 
 
 
@@ -40,9 +41,9 @@ export default function Weather() {
   // handling the submit action
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await getWeather1(city)
-    await getWeather2(city)
+    await getWeather(city)
     const address=await geocode(city)
+    setLocation(address)
     console.log(address)
     if(!address.message){
       
@@ -68,7 +69,7 @@ return (
               <div className={style.weatherIcon}>
                 <div className={style.location}>
                   <ImLocation2 fill={isDay === "no" ? '#ffffff' : '#000000'} size={30} className={style.locationIcon} />
-                  <p>{location.city}, {location.country}</p>
+                  <p>{location.location}</p>
                 </div>
                 <div className={style.weatherIconTemp}>
                   <img src={`https://openweathermap.org/img/wn/${weatherData.icon}@4x.png`} alt="" className={style.icon} />

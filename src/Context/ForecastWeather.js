@@ -11,7 +11,7 @@ export const ForecastWeatherProvider = ({ children }) => {
 
   const fetchForecastWeather = async (lat, lon) => {
     const { data } = await axios.get(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&appid=${API_KEY}`
+      `http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&appid=${API_KEY}`
     );
     setForecastWeatherHourly(data.hourly);
     setForecastWeatherDaily(data.daily);

@@ -6,19 +6,11 @@ export const DataContext = createContext();
 // const ApiStructure =
 //   "http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=f5d4275eb44e1c4e0f2685d54978fc6c";
 
-const key1 = "cc2ee984298825bbf478a71f73670aba";
 const Key2 = "f5d4275eb44e1c4e0f2685d54978fc6c";
 
 export function DataContextProvider({ children }) {
   const navigate = useNavigate();
-  const [data2, setData2] = useState([]);
   const [isDay, setIsDay] = useState("yes");
-  const [location, setLocation] = useState({
-    country: " ",
-    city: "",
-    localTime: "",
-  });
-  const [sys, setSys] = useState("");
   const [weatherData, setWeatherData] = useState({
     sunset: 0,
     sunrise: 0,
@@ -30,41 +22,14 @@ export function DataContextProvider({ children }) {
     success: true,
   });
 
-  const getWeather1 = async (city) => {
-    const data = await fetch(
-      `http://api.weatherstack.com/current?access_key=${key1}&query=${city}`
-    );
-    const reponse = await data.json();
-    setWeatherData((prv) => {
-      return {
-        ...prv,
-        success: reponse.success,
-      };
-    });
-    if (reponse.success === false) {
-      navigate("/error");
-    } else {
-      setLocation((prv) => {
-        return {
-          ...prv,
-          country: reponse.location.country,
-          city: reponse.location.name,
-          localTime: reponse.location.localtime,
-        };
-      });
-      setIsDay(reponse.current.is_day);
-    }
-  };
-
-  const getWeather2 = async (city) => {
+  const getWeather = async (city) => {
     const data = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${Key2}`
     );
     const reponse = await data.json();
-    setData2(reponse);
-    setSys(reponse.sys);
     if (reponse.cod === "404") {
-      console.log("getWeather 2 not found");
+      console.log("city not found");
+      navigate("/error");
     } else {
       setWeatherData((prv) => {
         return {
@@ -78,18 +43,21 @@ export function DataContextProvider({ children }) {
           humidity: reponse.main.humidity,
         };
       });
+      if (new Date().valueOf() / 1000 < reponse.sys.sunset) {
+        console.log("Day Time");
+        setIsDay("yes");
+      } else {
+        console.log("Night Time");
+        setIsDay("no");
+      }
     }
   };
 
   return (
     <DataContext.Provider
       value={{
-        getWeather1,
-        getWeather2,
-        data2,
+        getWeather,
         isDay,
-        location,
-        sys,
         weatherData,
       }}
     >
