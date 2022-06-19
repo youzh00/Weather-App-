@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react'
 import DataContext from '../Context/DataContext'
+import ForecastWeather from '../Context/ForecastWeather'
 import style from '../Style/Weather.module.css'
 import night from '../assets/night.jpg'
 import morning1 from '../assets/morning1.jpg'
@@ -9,8 +10,8 @@ import { SiWindicss } from 'react-icons/si'
 import { GiWaterDrop } from 'react-icons/gi'
 import { BsFillSunriseFill } from 'react-icons/bs'
 import { BsFillSunsetFill } from 'react-icons/bs'
-import WeatherHourly from '../Components/WeatherHourly'
-import {hourlyData} from '../Components/RawData'
+import {geocode} from '../Utils/Geocode'
+
 import HourlyWeaSlider from '../Components/HourlyWeaSlider'
 
 
@@ -19,6 +20,7 @@ import HourlyWeaSlider from '../Components/HourlyWeaSlider'
 
 export default function Weather() {
   const { getWeather1, getWeather2,  isDay, location, weatherData } = useContext(DataContext)
+  const {fetchForecastWeather}=useContext(ForecastWeather)
   const [city, setCity] = useState('')
   const [submited, setSubmited] = useState(false)
 
@@ -43,6 +45,12 @@ export default function Weather() {
     e.preventDefault()
     await getWeather1(city)
     await getWeather2(city)
+    const address=await geocode(city)
+    console.log(address)
+    if(!address.message){
+      
+      await fetchForecastWeather(address.latitude,address.longitude)
+    }
     setCity("")
     setSubmited(true)
   }
@@ -110,12 +118,8 @@ export default function Weather() {
               </div>
 
             </div>
-            {/* <div className={style.todayList}> */}
-                {/* {hourlyData.map((data)=>(
-                <WeatherHourly currentWeather={data.temp-273.15} img={`https://openweathermap.org/img/wn/${data.icon}@4x.png`} time='22:00' />
-                ))} */}
-                <HourlyWeaSlider/>
-            {/* </div> */}
+         
+                <HourlyWeaSlider isDay={isDay}/>
            
           </div>
           
