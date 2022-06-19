@@ -200,6 +200,10 @@
   border-radius: 20px;
   width: 13rem;
 }
+.nextDaysContainer:hover {
+  background-color: rgb(123, 218, 255);
+  box-shadow: 0 0px 20px 0px rgb(150, 190, 255);
+}
 .nextDays {
   display: flex;
   align-items: center;
@@ -207,7 +211,7 @@
 .nextDays p {
   font-size: 15px;
   margin: 5px;
-  font-style: italic;
+  color: black;
 }
 
 .todayList {

@@ -20,7 +20,7 @@
 }
 .weatherHourlyCart:hover {
   background-color: rgba(182, 123, 240);
-  box-shadow: 0 8px 20px 0px rgba(182, 123, 240);
+  box-shadow: 0 0px 20px 0px rgba(182, 123, 240);
 }
 .cartP {
   color: white;

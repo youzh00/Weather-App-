@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Home from "./Pages/Home";
-import TimeZone from "./Pages/TimeZone";
+import NextDaysWeather from "./Pages/NextDaysWeather";
+
 import Weather from "./Pages/Weather.jsx";
 import { DataContextProvider } from "./Context/DataContext";
 import { ForecastWeatherProvider } from "./Context/ForecastWeather";
@@ -15,8 +16,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/weather" element={<Weather />} />
+            <Route path="/weather/nextdays" element={<NextDaysWeather />} />
             <Route path="/error" element={<CityNotExist />} />
-            <Route path="/time-zone" element={<TimeZone />} />
           </Routes>
           <Navbar />
         </ForecastWeatherProvider>

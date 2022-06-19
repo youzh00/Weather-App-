@@ -119,10 +119,10 @@ export default function Weather() {
 
             </div>
             <div className={style.nextDaysContainer}>
-                <Link to="/weather">
+                <Link to="/weather/nextdays" style={{textDecoration: 'none'}}>
                 <div className={style.nextDays}>
-                  <BsCalendarWeek size={25} fill={isDay === "no" ? '#ffffff' : '#000000'} />
-                  <p > > 7 Days</p>
+                  <BsCalendarWeek size={25} fill={'#000000'} />
+                  <p > Next Days</p>
                 </div>
                 </Link>
                 
