@@ -19,14 +19,6 @@ export const sliderData = [
   },
   {
     id: uuidv4(),
-    image: img4,
-  },
-  {
-    id: uuidv4(),
     image: img5,
-  },
-  {
-    id: uuidv4(),
-    image: img6,
   },
 ];
