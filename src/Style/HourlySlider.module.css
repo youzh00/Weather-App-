@@ -2,10 +2,11 @@
   display: grid;
   grid-auto-flow: column;
   gap: 1px;
-  grid-auto-columns: 13%;
+  grid-auto-columns: 10%;
   overflow-x: auto;
   overscroll-behavior-inline: contain;
-  margin: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .leftArrow {
   position: absolute;
@@ -31,7 +32,56 @@
   justify-content: center;
   align-items: center;
   width: 95rem;
-  height: 170px;
+  height: 150px;
   background-color: rgba(30, 17, 43, 0.3);
-  border-radius: 30px;
+  border-radius: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 1em;
+  height: 1rem;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(85, 125, 255);
+  border-radius: 100vw;
+  margin-block: 0.5em;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(54, 44, 250);
+  border: 0.25em solid rgb(194, 189, 255);
+  border-radius: 100vw;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(4, 5, 47);
+}
+
+:root {
+  --ff-body: "Heebo", sans-serif;
+  --ff-heading: "Oswald", sans-serif;
+
+  --clr-primary-400: hsl(60 100% 50%);
+  --clr-neutral-900: hsl(0 0% 0%);
+  --clr-neutral-100: hsl(0 0% 100%);
+
+  --fs-xl: clamp(3.5rem, 12vw + 1rem, 12rem);
+  --fs-600: 2rem;
+  --fs-400: 1rem;
+}
+
+@media (min-width: 40em) {
+  :root {
+    --fs-600: 3rem;
+    --fs-400: 1.125rem;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
