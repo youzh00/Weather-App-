@@ -22,7 +22,6 @@ const NextDaysWeather = () => {
                  img={`https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`} 
                  description={data.weather[0].description}
                  date={data.dt}
-                 key={data.dt}
                  />
             ))}
       </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from '../Style/Header.module.css'
 import {TiWeatherPartlySunny} from 'react-icons/ti'
 

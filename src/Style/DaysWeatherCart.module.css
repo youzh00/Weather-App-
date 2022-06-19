@@ -9,6 +9,13 @@
   margin: 10px 0;
   padding: 15px;
   color: #3e0307;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+}
+.DaysWeatherCart:hover {
+  background-color: #3e0307;
+  color: #d3c1ff;
+  box-shadow: 0 0px 20px 0px #be313b;
 }
 .imgContainer {
   display: flex;

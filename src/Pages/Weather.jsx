@@ -5,12 +5,11 @@ import style from '../Style/Weather.module.css'
 import night from '../assets/night.jpg'
 import morning1 from '../assets/morning1.jpg'
 import { ImLocation2 } from 'react-icons/im'
-import { useNavigate,Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { SiWindicss } from 'react-icons/si'
 import { GiWaterDrop } from 'react-icons/gi'
 import { BsFillSunsetFill,BsCalendarWeek,BsFillSunriseFill } from 'react-icons/bs'
 import {geocode} from '../Utils/Geocode'
-
 import HourlyWeaSlider from '../Components/HourlyWeaSlider'
 
 
@@ -23,7 +22,6 @@ export default function Weather() {
   const [city, setCity] = useState('')
   const [submited, setSubmited] = useState(false)
 
-  const navigate = useNavigate()
 
 
   // Converting TimeStamp unix to time  
@@ -54,11 +52,9 @@ export default function Weather() {
     setSubmited(true)
   }
 
-  const navigating = () => {
-    navigate('/error')
-    return 0
-  }
-    return (
+
+return (
+  <>
       <div className={style.weather}>
         <img src={isDay === "no" ? night : morning1} alt="" className={style.image} />
         <div className={style.formContainer}>
@@ -130,12 +126,10 @@ export default function Weather() {
          
                 <HourlyWeaSlider />
            
-          </div>
-          
-          
-          }
+          </div>  
+        }
       </div>
-
+  </>
     )
   }
 

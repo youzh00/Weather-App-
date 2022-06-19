@@ -1,18 +1,16 @@
 import React, { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ForecastWeatherProvider } from "./ForecastWeather";
 
 export const DataContext = createContext();
 
-const ApiStructure =
-  "http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=f5d4275eb44e1c4e0f2685d54978fc6c";
+// const ApiStructure =
+//   "http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=f5d4275eb44e1c4e0f2685d54978fc6c";
 
 const key1 = "cc2ee984298825bbf478a71f73670aba";
 const Key2 = "f5d4275eb44e1c4e0f2685d54978fc6c";
 
 export function DataContextProvider({ children }) {
   const navigate = useNavigate();
-  const [data1, setData1] = useState([]);
   const [data2, setData2] = useState([]);
   const [isDay, setIsDay] = useState("yes");
   const [location, setLocation] = useState({
@@ -88,7 +86,6 @@ export function DataContextProvider({ children }) {
       value={{
         getWeather1,
         getWeather2,
-        data1,
         data2,
         isDay,
         location,
